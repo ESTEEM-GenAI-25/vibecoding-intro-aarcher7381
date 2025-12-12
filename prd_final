@@ -1,0 +1,180 @@
+1. Product Overview (Updated)
+
+Buying a used car is stressful, opaque, and often unfair to buyers—especially families, students, and people with limited budgets who simply need a reliable vehicle. Traditional marketplaces prioritize flashy listings and mileage over actual care, honesty, and long-term reliability. Users also struggle to understand what to look for before purchasing, leading to fear, confusion, and sometimes costly mistakes.
+
+Grandma’s Car is a transparency-first used-car marketplace designed for “real people on real budgets.” The platform highlights well-maintained older vehicles, requires mechanic inspections and service history documentation, and pairs these with two AI-powered features: a natural-language car search and a conversational assistant. The current prototype demonstrates a complete marketplace flow including featured cars, detailed listings, maintenance forecasting, seller onboarding, a mechanic directory, and fully functional AI interactions integrated using Google AI Studio.
+
+2. Core Features & Status
+Feature	Status	AI?	Notes
+Homepage + Branding	Implemented	No	Playful color palette and mission-focused messaging
+Featured Cars Listing	Implemented	No	Real images, mileage, reliability score, inspection badge
+Car Detail Pages	Implemented	Partial	Includes reliability score, mileage, maintenance forecast
+AI Natural-Language Search	Implemented	Yes	Converts plain-text needs into relevant vehicle suggestions
+Grandma’s Assistant Chatbot	Implemented	Yes	Friendly persona recommending cars and explaining reasoning
+Smart Maintenance Forecast	Partially Implemented	Partially	Based on service history + general reliability trends
+Seller Upload Flow	Implemented	No	Inspection → upload → listing guidance
+Mechanic Directory	Implemented	No	Verified mechanics with specialties and ratings
+Responsive Layout	Partially Implemented	No	Works well on desktop; limited responsiveness
+User Accounts / Real Listings	Future	No	Not included in prototype
+3. AI Specification (Final)
+What the AI Does
+
+Grandma’s Car uses generative AI for two tasks:
+
+Natural-Language Car Search
+
+Inputs: A user’s open-ended query (e.g., “safe AWD SUV under $15k for snow”).
+
+Process: Interprets budget, seating needs, terrain, reliability, efficiency, and buyer priorities.
+
+Outputs: Tailored car suggestions with reasoning (e.g., reliability score, fit-for-use, cost).
+
+Grandma’s Assistant (Conversational Chatbot)
+
+Provides warm, supportive recommendations.
+
+Reflects model knowledge about make/model/year reliability.
+
+Explains maintenance considerations and trade-offs in conversational language.
+
+Location in User Flow
+
+Appears on homepage and dedicated “Assistant” section.
+
+Search bar integrated into main navigation and featured cars page.
+
+Helps users early in decision-making (“I don’t know what I need”) rather than final purchase steps.
+
+Model / Tool
+
+Built using Google AI Studio
+
+Likely powered by Gemini 1.5 Flash (text model) within vibe coding environment
+
+Constraints & Guardrails
+
+Assistant avoids definitive mechanical claims
+
+Encourages professional inspections (“check with a mechanic”)
+
+No pricing guarantees
+
+Refrains from legal/financial advice
+
+Does not store query data
+
+Limited examples reduce hallucination risk
+
+4. Technical Architecture (Reality Check)
+Front-End
+
+Auto-generated HTML/CSS from Google AI Studio
+
+Manual adjustments for images, icons, and UI structure
+
+Inline JavaScript for chat logic and search interactions
+
+Hardcoded inventory dataset (JSON-like structure inside the HTML)
+
+AI Integration
+
+Direct calls to Gemini inside AI Studio-generated JavaScript
+
+One model reused for both AI features with different prompting contexts
+
+No backend server; all logic handled client-side via AI Studio environment
+
+External Services
+
+Pexels for vehicle images (free/commercial-use photos)
+
+No external automotive APIs integrated
+
+5. Prompting & Iteration Summary
+
+I used vibe-coding tools iteratively, starting with a broad marketplace generation prompt (“build a used car site like Autotrader with AI features”). From there:
+
+Key Prompts
+
+“Please make the AI Buyer Assistant Chat functional.”
+
+Critical for enabling real conversational responses.
+
+“Use a playful color palette with orange, green, blue, pink, and purple.”
+
+Directed brand design.
+
+“Match these Pexels images to the correct make/model.”
+
+Corrected AI’s mismatched sample data.
+
+“Create icons for reliability score and mechanic inspection.”
+
+Added user-facing trust signals.
+
+How Prompts Evolved
+
+Early prompts were broad (site layout); later prompts became very specific (tone, layout, functionality).
+
+Adjusting tone and persona required multiple iterations to achieve the warm, “grandma-like” voice.
+
+Making the chatbot functional involved prompting the system to bind UI elements to the model.
+
+What I Learned
+
+Specificity dramatically improves output quality.
+
+AI-generated UIs require human editing.
+
+Persona-based prompting changes user experience significantly.
+
+Vibe coding accelerates prototypes but still relies on human oversight.
+
+6. UX & Limitations
+Intended User Journey
+
+Land on homepage → understand value proposition
+
+Browse featured cars
+
+Use AI search or Grandma’s Assistant to narrow options
+
+View car details + maintenance forecast
+
+If selling, follow inspection → upload → listing flow
+
+Explore verified mechanics as needed
+
+Known Limitations
+
+Static inventory; no live data or backend
+
+Reliability scores are demo-generated, not from real datasets
+
+Maintenance forecasts are illustrative
+
+No real authentication, payment, or messaging systems
+
+Chatbot may occasionally generalize or hallucinate minor details
+
+When Users Shouldn’t Rely on the Tool
+
+For mechanical assessments
+
+For pricing valuations
+
+For legal/financial car-buying decisions
+
+As a substitute for a certified mechanic’s inspection
+
+7. Future Roadmap
+
+VIN-based reliability and recall integration using NHTSA or external APIs
+
+Real seller accounts & dynamic listings with a full backend
+
+Mechanic partner portal for uploading inspection reports directly
+
+Advanced AI scoring using historical maintenance + reliability datasets
+
+Mobile-first redesign for broader accessibility
